@@ -1,0 +1,155 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f3f3f3;
+    margin: 0;
+}
+
+/*Navbar*/
+.navbar {
+    background-color: white;
+    /* margin-bottom: 10px; */
+}
+
+.profile_pic {
+    height: 40px;
+    width: 40px;
+}
+
+.profile {
+    /* min-width: 100px; */
+    /* position: sticky; */
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    min-width: 150px;
+}
+
+/*TextEditor*/
+.title {
+    display: flex;
+    justify-content: center;
+    margin: 10px 20px;
+}
+
+.titleCnt {
+    display: flex;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.inputCnt {
+    display: flex;
+    align-items: center;
+}
+
+.titleCnt img {
+    width: 80px;
+    height: 80px;
+    margin: 10px 10px;
+}
+
+.inputCnt input {
+    font-size: 20px;
+    height: 60px;
+    font-weight: bold;
+    margin: 10px 10px;
+    border: none;
+    outline: none;
+    padding: 0px 10px;
+    /* border-radius: 20px; */
+}
+
+.inputCnt input:focus {
+    border: 0.5px solid rgba(114, 109, 109, 0.753);
+    border-radius: 10px;
+}
+
+.main_container .ql-editor {
+    width: 8.5in;
+    min-height: 11in;
+    padding: 1in;
+    margin: 1rem;
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5);
+    background-color: white;
+}
+
+.main_container .ql-container.ql-snow {
+    border: none;
+    display: flex;
+    justify-content: center;
+}
+
+.main_container .ql-toolbar.ql-snow {
+    display: flex;
+    justify-content: center;
+    position: sticky;
+    top: 57px;
+    z-index: 1;
+    background-color: #f3f3f3;
+}
+
+/*Home*/
+
+.Homecnt {
+    min-height: 300px;
+    background-color: white;
+    margin-top: 10px;
+    padding: 10px;
+    display: flex;
+    /* justify-content: space-between; */
+    flex-wrap: wrap;
+}
+
+.card {
+    width: 13rem;
+    /* margin: 20px 4%; */
+    border: none;
+}
+
+.card img {
+    height: 10rem;
+}
+
+.card :hover {
+    cursor: pointer;
+}
+
+
+@media print {
+    body {
+        background: none;
+    }
+
+    .main_container .ql-editor {
+        width: 6.5in;
+        height: 9in;
+        padding: 0;
+        margin: 0;
+        box-shadow: none;
+        align-self: flex-start;
+    }
+
+    .main_container .ql-toolbar.ql-snow {
+        display: none;
+    }
+
+    .navbar {
+        display: none;
+    }
+
+    .title {
+        display: none;
+    }
+}
+
+/*Allowed Users*/
+.AllowedUserEle{
+    background-color: white;
+    margin: 10px 0px;
+    padding: 5px 10px;
+}
