@@ -56,7 +56,7 @@ router.post('/addAllowedUser/:id', AuthenticateUserforHTTPReq, async (req, res) 
     document.userAllowed.push({ name: user.name, email });
     await Docs.findByIdAndUpdate(documentID, { $set: document });
 
-    return res.json({userAllowed:document.userAllowed, msg: "User added to alloweduses" });
+    return res.json({userAllowed:document.userAllowed, msg: "User added to allowedusers" });
 
 });
 
@@ -85,7 +85,7 @@ router.post('/deleteAllowedUser/:id', AuthenticateUserforHTTPReq, async (req, re
     document.userAllowed.splice(index, 1);
     await Docs.findByIdAndUpdate(documentID, { $set: document });
 
-    return res.json({userAllowed:document.userAllowed, msg: "User deleted from alloweduses" });
+    return res.json({userAllowed:document.userAllowed, msg: "User deleted from allowedusers" });
 
 });
 

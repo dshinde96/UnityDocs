@@ -12,10 +12,9 @@ const DocsCard = (props) => {
                     <div class="card-body">
                         <h5 class="card-title">{docs.title}</h5>
                         {docs.owner.email !== localStorage.getItem('email') ?<div class="card-text">
-                            <p style={{ fontWeight: "bold" }}>Owner Information</p>
-                            <p>Name:{docs.owner.email === localStorage.getItem('email') ? "Self" : docs.owner.name}<br />
-                                Email: {docs.owner.email}</p>
-                        </div>  : <p>Owner: Self</p>}
+                            <p style={{ fontWeight: "bold", marginBottom:"0px" }}>Owner Information</p>
+                            <p>{docs.owner.name}<br />{docs.owner.email}</p>
+                        </div>  : <p style={{ fontWeight: "bold", marginBottom:"0px" }}>Owner: Self</p>}
                     </div>
                 </div>
                 {docs.owner.email === localStorage.getItem('email') ? <Link to={`/getAllowedUsers/${docs._id}`} class="btn btn-primary">Accessible Users</Link> : ""}

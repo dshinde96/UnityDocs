@@ -8,6 +8,7 @@ const AllowedStudents = () => {
     const [AllowedUser, setAllowedUser] = useState([]);
     const [email, setemail] = useState("");
     const [msg, setmsg] = useState("");
+    const [success,setSuccess]=useState(false);
     const [loading, setloading] = useState(true);
     const { id } = useParams();
 
@@ -44,16 +45,22 @@ const AllowedStudents = () => {
             body: JSON.stringify({ email }),
         });
         const data = await response.json();
-        if(response.status!=200){
+        if (response.status != 200) {
+            setSuccess(false);
             setmsg(data.msg);
-            return;
         }
+        else{
+        setSuccess(true);
+        setmsg(data.msg);
         setAllowedUser(data.userAllowed);
         setloading(false);
+        }
+        setTimeout(() => { setmsg('') }, 5000);
+        return;
     }
 
     //Remove access of this document from selected user
-    const removeUser=async (useremail) => {
+    const removeUser = async (useremail) => {
         setmsg('');
         const url = `http://localhost:8000/docs/deleteAllowedUser/${id}`
         const response = await fetch(url, {
@@ -62,15 +69,22 @@ const AllowedStudents = () => {
                 "Content-Type": "application/json",
                 "authTocken": localStorage.getItem('authTocken')
             },
-            body: JSON.stringify({ email:useremail }),
+            body: JSON.stringify({ email: useremail }),
         });
         const data = await response.json();
-        if(response.status!=200){
+        if (response.status != 200) {
+            setSuccess(false);
             setmsg(data.msg);
-            return;
+            
         }
-        setAllowedUser(data.userAllowed);
-        setloading(false);
+        else{
+            setAllowedUser(data.userAllowed);
+            setloading(false);
+            setSuccess(true);
+            setmsg(data.msg);
+        }
+        setTimeout(() => { setmsg('') }, 5000);
+        return;
     }
 
     useEffect(() => {
@@ -82,17 +96,17 @@ const AllowedStudents = () => {
             <Navbar />
             <div className="container">
                 <div className="Addusere">
-                    <p style={{minHeight:"25px" ,color: "red", marginTop:"10px"}}>{msg}</p>
+                    <p style={{ color: "red", marginTop: "10px" }}>Note: These User can access ,modify and Update this document *Permanantly</p>
                     <input type="text" className="mx-2" placeholder="Enter Email of the user" onChange={(e) => setemail(e.target.value)} />
                     <button className="btn btn-primary mx-2" onClick={addUser}>Give Acccess</button>
-                    <p style={{color: "red", marginTop:"10px"}}>Note: These User can access ,modify and Update this document *Permanantly</p>
+                    <p style={{ minHeight: "25px", color: `${success?"green":"red"}`, marginTop: "10px" }}>{msg}</p>
                 </div>
                 <div className="AlloweUser">
                     {!loading ? AllowedUser.map((user) => <>
                         <div className="AllowedUserEle">
                             <div>Name: {user.name}</div>
                             <div>Email: {user.email}</div>
-                            <button className="btn btn-danger mt-2" onClick={()=>removeUser(user.email)}>Remove User</button>
+                            <button className="btn btn-danger mt-2" onClick={() => removeUser(user.email)}>Remove User</button>
                         </div>
                     </>) : ""}
                 </div>

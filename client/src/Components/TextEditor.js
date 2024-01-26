@@ -99,8 +99,7 @@ const TextEditor = () => {
 
   //Handle change in title of docs
   useEffect(() => {
-    if (socket == null || Title=='') return;
-
+    if (socket == null) return;
     const interval = setInterval(() => {
       socket.emit('saveTitle', Title);
     }, 2000);
@@ -110,6 +109,8 @@ const TextEditor = () => {
     socket.emit('titleChange',Title);
     socket.on('titleChange',handler);
     return () => {
+      if(Title=='')
+      setTitle("Untitled Document");
       socket.emit('saveTitle', Title);
       clearInterval(interval);
     }

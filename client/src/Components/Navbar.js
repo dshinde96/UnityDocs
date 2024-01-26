@@ -26,7 +26,7 @@ const Navbar=()=>{
                             </li>
                         </ul>
                         <div class="nav-item dropdown" style={{color:"white"}}>
-                            <a class="nav-link dropdown-toggle profile" href="/" role="button" data-bs-toggle="dropdown" aria-expanded="false" style={{display:"flex"}}>
+                            <a class="nav-link dropdown-toggle profile" href="/" role="button" data-bs-toggle="dropdown" aria-expanded="false" style={{display:"flex", justifyContent:"flex-end"}}>
                             <div className="profile mx-2">
                                 <img className='profile_pic mx-2' src={img_src} style={{ height: "40px", width: "40px",backgroundColor:"white", borderRadius:"100%"}} />
                                 <h6 style={{color:"white"}}>{user}</h6>

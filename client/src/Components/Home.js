@@ -58,11 +58,11 @@ const Home = () => {
             <Navbar />
             <div className='container'>
                 <div className='Homecnt'>
-                    <div className="card  mx-5 mt-5" style={{ border: "0.05px solid rgb(107, 102, 102, 0.729)" }} onClick={AddNewDocs}>
-                        <img src={img_src} style={{ height: "15rem" }} className="card-img-top" alt="..." />
+                    <div className="card  mx-5 mt-5" /*style={{ border: "0.05px solid rgb(107, 102, 102, 0.729)"}}*/ onClick={AddNewDocs}>
+                        <img src={img_src} style={{ height: "15rem" , borderRadius:"0%" }} className="card-img-top" alt="..." />
                         <div className="card-body">
                             <h5 className="card-title">Blank Document</h5>
-                            <p>Create new Document</p>
+                            {/* <p>Create new Document</p> */}
                         </div>
                     </div>
                     {docList.map((docs) => {
