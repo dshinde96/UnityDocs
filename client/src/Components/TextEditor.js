@@ -109,8 +109,6 @@ const TextEditor = () => {
     socket.emit('titleChange',Title);
     socket.on('titleChange',handler);
     return () => {
-      if(Title=='')
-      setTitle("Untitled Document");
       socket.emit('saveTitle', Title);
       clearInterval(interval);
     }

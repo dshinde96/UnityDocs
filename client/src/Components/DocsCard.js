@@ -10,14 +10,14 @@ const DocsCard = (props) => {
                 <div class="card" onClick={() => navigate(`/documet/${docs._id}`)}>
                     <img src={img_src} class="card-img-top" alt="..." />
                     <div class="card-body">
-                        <h5 class="card-title">{docs.title}</h5>
+                        <h5 class="card-title mt-1">{docs.title || "Untitled Document"}</h5>
                         {docs.owner.email !== localStorage.getItem('email') ?<div class="card-text">
                             <p style={{ fontWeight: "bold", marginBottom:"0px" }}>Owner Information</p>
                             <p>{docs.owner.name}<br />{docs.owner.email}</p>
                         </div>  : <p style={{ fontWeight: "bold", marginBottom:"0px" }}>Owner: Self</p>}
                     </div>
                 </div>
-                {docs.owner.email === localStorage.getItem('email') ? <Link to={`/getAllowedUsers/${docs._id}`} class="btn btn-primary">Accessible Users</Link> : ""}
+                {docs.owner.email === localStorage.getItem('email') ? <Link to={`/getAllowedUsers/${docs._id}`} class="btn btn-primary">Manage Access</Link> : ""}
             </div>
         </>
     )

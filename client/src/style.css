@@ -110,11 +110,16 @@ body {
     border: none;
     /* margin: 20px 4%; */
     background-color: #f3f3f3;
+    
 }
 
 .card img {
     height: 10rem;
+    border-radius: 10%;
     border-top-right-radius: 55%;
+    /* box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px; */
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    /* box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px; */
 }
 
 .card :hover {
