@@ -3,11 +3,11 @@ import { useState } from "react";
 import "../style.css"
 const Navbar = () => {
     const img_src = "https://th.bing.com/th/id/R.9d32bec8058bd3595a63a08a8cc12ade?rik=9cCTin36GLU%2f5w&riu=http%3a%2f%2fcdn.onlinewebfonts.com%2fsvg%2fimg_87237.png&ehk=hVpH%2bC7rwlA1j2KqxGpMs1sp9l0RgM0jjRJsJsvDoPc%3d&risl=&pid=ImgRaw&r=0";
-    const [user, setuser] = useState(localStorage.getItem('user'));
+    const [user, setuser] = useState(sessionStorage.getItem('user'));
     const navigate = useNavigate();
     const logout = () => {
-        localStorage.setItem('user', '');
-        localStorage.setItem('authTocken', '');
+        sessionStorage.setItem('user', '');
+        sessionStorage.setItem('authTocken', '');
         navigate('/login');
     }
     return (
@@ -15,7 +15,7 @@ const Navbar = () => {
             <>
                 <nav class="navbar bg-dark navbar-expand-lg bg-body-tertiary sticky-top">
                     <div class="container-fluid">
-                        <a class="navbar-brand" href="#" style={{ color: "white" }}>DocsHub</a>
+                        <a class="navbar-brand" href="#" style={{ color: "white" }}>UnityDocs</a>
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
                         </button>

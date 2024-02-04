@@ -11,8 +11,6 @@ router.get('/getAllowedUsers/:id', AuthenticateUserforHTTPReq, async (req, res) 
         const documentID = req.params.id;
         const document = await Docs.findOne({ _id: documentID });
         
-        console.log(String(document.owner));
-        console.log(req.user._id);
         if (req.user._id !== String(document.owner))
             return res.status(401).json({ msg: "Access Denied" });
 

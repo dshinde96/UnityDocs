@@ -12,7 +12,6 @@ router.post('/signup',
         try {
             const result = validationResult(req);
             if (!result.isEmpty()) {
-                console.log(result);
                 return res.status(401).json({ msg: "Invalid Email Address or Name and Password caannot be empty" });
             }
             const { name, email, password } = req.body;
@@ -46,11 +45,9 @@ router.post('/login',
         try {
             const result = validationResult(req);
             if (!result.isEmpty()) {
-                console.log(result);
                 return res.status(401).json({ msg: "Invalid Email Address or Password caannot be empty" });
             }
             const { email, password } = req.body;
-            console.log(req.body);
             const user = await User.findOne({ email });
             if (!user) {
                 return res.status(401).json({ msg: "Invalid credentials" });

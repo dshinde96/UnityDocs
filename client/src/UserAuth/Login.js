@@ -23,9 +23,9 @@ const Login = () => {
             setinvalidcred(true);
             return;
         }
-        localStorage.setItem("authTocken", data.authTocken);
-        localStorage.setItem("user", data.user);
-        localStorage.setItem("email", data.email);
+        sessionStorage.setItem("authTocken", data.authTocken);
+        sessionStorage.setItem("user", data.user);
+        sessionStorage.setItem("email", data.email);
         navigate('/');
 
     }

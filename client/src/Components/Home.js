@@ -13,16 +13,13 @@ const Home = () => {
 
     //Once the Component is rendered, set connection as socket
     useEffect(() => {
-        if (!localStorage.getItem('authTocken')) {
+        if (!sessionStorage.getItem('authTocken')) {
             navigate('/login');
         }
         const s = io.connect("http://localhost:8000/Home", {
             reconnectionDelayMax: 10000,
             auth: {
-                token: localStorage.getItem('authTocken'),
-            },
-            query: {
-                "my-key": "my-value"
+                token: sessionStorage.getItem('authTocken'),
             }
         });
         setSocket(s);
@@ -36,7 +33,6 @@ const Home = () => {
     useEffect(() => {
         if (socket == null) return;
         const handler = (docs) => {
-            console.log(docs);
             setdocList(docs);
         }
         socket.on('getDocs', handler);

@@ -4,7 +4,7 @@ const nav=()=>{
         <>
             <nav class="navbar bg-dark navbar-expand-lg bg-body-tertiary sticky-top">
                 <div class="container-fluid">
-                    <a class="navbar-brand" href="#" style={{color:"white"}}>DocsHub</a>
+                    <a class="navbar-brand" href="#" style={{color:"white"}}>UnityDocs</a>
                 </div>
             </nav>
         </>

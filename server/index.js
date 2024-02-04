@@ -11,7 +11,7 @@ const Docs = require('./Models/Docs');
 
 const app = express();
 const PORT = process.env.PORT || 8000;
-const mongoURL = process.env.mongoURL || 'mongodb://127.0.0.1:27017/DocsWorld';
+const mongoURL = process.env.mongoURL || 'mongodb://127.0.0.1:27017/UnityDocs';
 connecToMongo(mongoURL);
 
 app.use(express.json());
@@ -52,7 +52,6 @@ TextEditor.on('connection', (socket) => {
         socket.on('getDocument', async () => {
             const docs = await Docs.findOne({ _id: documentID });
             const userAllowed = docs.userAllowed.find((user) => user.email === socket.user.email);
-            // console.log(userAllowed);
             if (!docs) {
                 return socket.emit('loadDocument', "Not found")
             }
@@ -93,7 +92,8 @@ Dashboard.on('connection', async (socket) => {
                 owner: socket.user._id
             });
             socket.emit('response', docs._id);
-            const docsList = await Docs.find({ owner: socket.user._id }).select("_id title");
+            let docsList = await Docs.find().select("-data").populate("owner");
+            docsList = docsList.filter((docs) => String(docs.owner._id) === socket.user._id || docs.userAllowed.findIndex((user) => user.email === socket.user.email) != -1);
             socket.broadcast.to(socket.user._id).emit('getDocs', docsList);
         });
 

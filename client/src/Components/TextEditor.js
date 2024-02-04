@@ -17,6 +17,7 @@ var toolbarOptions = [
 
   [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
   [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+  [ 'link', 'image'],          // add's image support
 
   [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
   [{ 'font': [] }],
@@ -38,12 +39,12 @@ const TextEditor = () => {
 
   //Once the Component is rendered, set connection as socket
   useEffect(() => {
-    if (!localStorage.getItem('authTocken')) {
+    if (!sessionStorage.getItem('authTocken')) {
       navigate('/login');
     }
     const s = io("http://localhost:8000/textEditor", {
       auth: {
-        token: localStorage.getItem('authTocken'),
+        token: sessionStorage.getItem('authTocken'),
       },
       query: {
         documentID: documentID
@@ -99,7 +100,7 @@ const TextEditor = () => {
 
   //Handle change in title of docs
   useEffect(() => {
-    if (socket == null) return;
+    if (socket == null || Title=='') return;
     const interval = setInterval(() => {
       socket.emit('saveTitle', Title);
     }, 2000);
@@ -124,7 +125,7 @@ const TextEditor = () => {
       modules: {
         toolbar: toolbarOptions
       }, theme: 'snow'
-    },);
+    });
     q.disable();
     q.setText('Loading...')
     setQuill(q);

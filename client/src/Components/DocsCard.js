@@ -11,13 +11,13 @@ const DocsCard = (props) => {
                     <img src={img_src} class="card-img-top" alt="..." />
                     <div class="card-body">
                         <h5 class="card-title mt-1">{docs.title || "Untitled Document"}</h5>
-                        {docs.owner.email !== localStorage.getItem('email') ?<div class="card-text">
+                        {docs.owner.email !== sessionStorage.getItem('email') ?<div class="card-text">
                             <p style={{ fontWeight: "bold", marginBottom:"0px" }}>Owner Information</p>
                             <p>{docs.owner.name}<br />{docs.owner.email}</p>
                         </div>  : <p style={{ fontWeight: "bold", marginBottom:"0px" }}>Owner: Self</p>}
-                    </div>
+                    </div>    
                 </div>
-                {docs.owner.email === localStorage.getItem('email') ? <Link to={`/getAllowedUsers/${docs._id}`} class="btn btn-primary">Manage Access</Link> : ""}
+                {docs.owner.email === sessionStorage.getItem('email') ? <Link to={`/getAllowedUsers/${docs._id}`} class="btn btn-primary">Manage Access</Link> : ""}
             </div>
         </>
     )

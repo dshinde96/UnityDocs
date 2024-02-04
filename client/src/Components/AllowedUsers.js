@@ -20,7 +20,7 @@ const AllowedStudents = () => {
             method: "GET", // *GET, POST, PUT, DELETE, etc.
             headers: {
                 "Content-Type": "application/json",
-                "authTocken": localStorage.getItem('authTocken')
+                "authTocken": sessionStorage.getItem('authTocken')
             },
             body: JSON.stringify(),
         });
@@ -40,7 +40,7 @@ const AllowedStudents = () => {
             method: "POST", // *GET, POST, PUT, DELETE, etc.
             headers: {
                 "Content-Type": "application/json",
-                "authTocken": localStorage.getItem('authTocken')
+                "authTocken": sessionStorage.getItem('authTocken')
             },
             body: JSON.stringify({ email }),
         });
@@ -67,7 +67,7 @@ const AllowedStudents = () => {
             method: "POST", // *GET, POST, PUT, DELETE, etc.
             headers: {
                 "Content-Type": "application/json",
-                "authTocken": localStorage.getItem('authTocken')
+                "authTocken": sessionStorage.getItem('authTocken')
             },
             body: JSON.stringify({ email: useremail }),
         });
